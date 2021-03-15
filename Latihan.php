@@ -1,75 +1,35 @@
 <?php
 
-interface hitungLuas {
-    public function hitungLuasPersegi($sisi);
+class Laptop {
+    public $pemilik, $merk;
 
-    public function hitungLuasSegitiga($sisi);
-
-    public function hitungLuasLingkaran($sisi);
-}
-
-class Persegi implements hitungLuas {
-
-    public function hitungLuasPersegi($sisi)
+    public function __construct($pemilik = "Pemilik", $merk = "Merk")
     {
-        return $sisi * $sisi;
+        $this->pemilik = $pemilik;
+        $this->merk = $merk;
     }
 
-    public function hitungLuasSegitiga($sisi)
+    public function hidupkan_laptop()
     {
-        return "Error : Objek bukan segitiga.";
+        return "Hidupkan laptop {$this->merk} punya {$this->pemilik}";
     }
 
-    public function hitungLuasLingkaran($sisi)
+    public function matikan_laptop()
     {
-        return "Error : Objek bukan Lingkaran";
-    }
-}
-
-class Segitiga implements hitungLuas {
-
-    public function hitungLuasPersegi($sisi)
-    {
-        return "Error : Objek bukan persegi";
+        return "Matikan laptop {$this->merk} punya {$this->pemilik}";
     }
 
-    public function hitungLuasSegitiga($sisi)
+    public function restart_laptop()
     {
-        return (1/2) * $sisi * $sisi;
-    }
-
-    public function hitungLuasLingkaran($sisi)
-    {
-        return "Error : Objek bukan lingkaran";
+        return "Matikan laptop {$this->merk} punya {$this->pemilik}. Hidupkan laptop {$this->merk} punya {$this->pemilik}";
     }
 }
 
-class Lingkaran implements hitungLuas {
-
-    public function hitungLuasPersegi($sisi)
-    {
-        return "Error : Objek bukan persegi";
-    }
-
-    public function hitungLuasSegitiga($sisi)
-    {
-        return "Error : Objek bukan segitiga";
-    }
-
-    public function hitungLuasLingkaran($sisi)
-    {
-        return $sisi * $sisi * pi();
-    }
-}
-
-$objek1 = new Persegi();
-$objek2 = new Segitiga();
-$objek3 = new Lingkaran();
-
-echo "<b>Jika luas sisi = 3</b><hr>";
-echo "Luas Persegi = {$objek1->hitungLuasPersegi(3)}";
-echo '<br>';
-echo "Luas Segitiga = 
-{$objek2->hitungLuasSegitiga(3)}";
-echo '<br>';
-echo "Luas Lingkaran = {$objek3->hitungLuasLingkaran(3)}";
+$laptop1 = new Laptop("A", "ASUS");
+echo $laptop1->hidupkan_laptop();
+echo "<br><br>";
+$laptop1 = new Laptop("B", "Acer");
+echo $laptop1->matikan_laptop();
+echo "<br><br>";
+$laptop1 = new Laptop("C", "Lenovo");
+echo $laptop1->restart_laptop();
